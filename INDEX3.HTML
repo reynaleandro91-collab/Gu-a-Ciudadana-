@@ -1,0 +1,155 @@
+<HTML> 
+<html lang="es"> <!-- doc en español -->
+
+<head>
+   <meta charset="UTF-8"> <!-- codifica caracteres -->
+   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- ajusta el diseño a móviles -->
+   <script src="maestra.js"></script>
+
+   <title>GUIA DIGITAL CIUDADANA</title> <!-- título que aparece en la pestaña -->
+
+   <!-- Fuente moderna -->
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+   <style>
+      body {
+         margin: 0; /* elimina márgenes por defecto */
+         font-family: 'Poppins', sans-serif; /* fuente de texto */
+         background-color: #01a1c1;
+      }
+
+      /* estilo del menú principal */
+      nav {
+         background: #01a1c1; /* fondo vino */
+      }
+
+      nav ul {
+         list-style: none; /* quita viñetas */
+         margin: 0;
+         padding: 0;
+         display: flex; /* coloca los <li> en línea */
+      }
+
+      nav ul li {
+         position: relative; /* necesario para submenú */
+      }
+
+      nav ul li a {
+         display: block; /* toda el área clickeable */
+         padding: 15px 20px;
+         color: white;
+         text-decoration: none;
+         font-weight: 600;
+      }
+
+      nav ul li a:hover {
+         background: #bae1e0; /* color más claro al pasar el ratón */
+      }
+
+      /* estilo del submenú */
+      nav ul li ul {
+         display: none; /* oculto por defecto */
+         position: absolute;
+         top: 100%;
+         left: 0;
+         background: #8c1d40; /* fondo del submenú */
+         padding: 0;
+         min-width: 180px;
+         border-radius: 5px;
+      }
+
+      nav ul li ul li a {
+         padding: 10px 15px;
+      }
+
+      nav ul li ul li a:hover {
+         background: #a63d59; /* más claro al pasar el ratón */
+      }
+
+      /* mostrar el submenú */
+      nav ul li:hover > ul {
+         display: block;
+      }
+   </style>
+</head>
+
+<body>
+   <center>
+   <!-- menú principal -->
+   <nav>
+      <ul>
+         <!-- Elemento simple sin subtema -->
+         <!-- Elemento con submenú -->
+         <li>
+                     <img src="logoss.png" width="130" height="130" align="center">
+                  </li>
+                  <li>
+                  <form method="get" action="https://www.google.com/search" target="_blank">
+    <input type="search" name="q" placeholder="Introducir búsqueda" autofocus required>
+    <input type="submit">
+  </form></li>
+</div>
+                  <li>
+            <p><a href="ciudadanoo.html">CIUDADANO</a></p>
+  
+         </li>
+
+         <!-- Elemento con submenú -->
+         <li>
+            <p><a href="TRAMITE.HTML">TRAMITE</a></p>
+            <ul>
+               <p><a href="bvh.html">Administrativos</a></p>
+               <li><a href="gestionar.php">Gestionar Tramite</a></li>
+            </ul>
+         </li>
+
+         <li>
+            <p><a href="SOLICITUD.HTML">SOLICITUD</a></p>
+         </li>
+
+         <!-- Elemento con submenú -->
+         <li>
+            <p><a href="PAGO.HTML">PAGO</a></p>
+            <ul>
+               <p><a href="serviciosyderechos.html">Servicios y Derechos</a></p>
+               <li><a href="#">…….</a></li>
+            </ul>
+         </li>
+
+         <li>
+            <p><a href="DOCUMENTO.HTML">DOCUMENTO</a></p>
+            <ul>
+               <p><a href="galeria2.html">Galeria</a></p>
+            </ul>
+         </li>
+
+         <li>
+            <p><a href="visitantes.HTML">VISITANTES</a></p>
+            <ul>
+               <p><a href="index2.php">REGISTRO</a></p>
+
+               
+               <li><a href="#">…….</a></li>
+            </ul>
+         </li>
+          <li>
+<a href="index3.php">
+    <img src="defis.png" alt="Ir al formulario" width="130" height="130" style="cursor:pointer;">
+</a>
+        </li>
+
+         <li>
+            <ul>
+               <p><a href="gestionar.php">GESTIONAR TRAMITES</a></p>
+            </ul>
+         </li>
+      </ul>
+
+</center>
+
+   </nav>
+<center>
+<img src="portada2.jpg"align="left"width="2000" height="1200">
+</center>
+</body>
+</html>
