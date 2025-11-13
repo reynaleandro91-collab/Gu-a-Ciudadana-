@@ -1,2 +1,0 @@
-# Guia-Ciudadana-
-Proyecto Transversal 
