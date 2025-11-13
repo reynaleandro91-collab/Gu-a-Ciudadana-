@@ -1,155 +1,282 @@
-<HTML> 
-<html lang="es"> <!-- doc en español -->
+<!DOCTYPE HTML>
+<html lang="es">
 
 <head>
-   <meta charset="UTF-8"> <!-- codifica caracteres -->
-   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- ajusta el diseño a móviles -->
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <script src="maestra.js"></script>
-
-   <title>GUIA DIGITAL CIUDADANA</title> <!-- título que aparece en la pestaña -->
+   <title>GUIA DIGITAL CIUDADANA</title>
 
    <!-- Fuente moderna -->
    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
    <style>
       body {
-         margin: 0; /* elimina márgenes por defecto */
-         font-family: 'Poppins', sans-serif; /* fuente de texto */
-         background-color: #01a1c1;
+         margin: 0;
+         font-family: 'Poppins', sans-serif;
+         background: linear-gradient(to bottom, #0186a1, #01a1c1);
       }
 
-      /* estilo del menú principal */
       nav {
-         background: #01a1c1; /* fondo vino */
+         background: #017f99;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         flex-wrap: wrap;
+         padding: 10px;
       }
 
       nav ul {
-         list-style: none; /* quita viñetas */
+         list-style: none;
          margin: 0;
          padding: 0;
-         display: flex; /* coloca los <li> en línea */
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: center;
+         align-items: center;
       }
 
       nav ul li {
-         position: relative; /* necesario para submenú */
+         position: relative;
+         margin: 0 8px;
       }
 
       nav ul li a {
-         display: block; /* toda el área clickeable */
+         display: block;
          padding: 15px 20px;
          color: white;
          text-decoration: none;
          font-weight: 600;
+         border-radius: 8px;
+         transition: background 0.3s;
       }
 
       nav ul li a:hover {
-         background: #bae1e0; /* color más claro al pasar el ratón */
+         background: #00c3de;
       }
 
-      /* estilo del submenú */
       nav ul li ul {
-         display: none; /* oculto por defecto */
+         display: none;
          position: absolute;
          top: 100%;
          left: 0;
-         background: #8c1d40; /* fondo del submenú */
-         padding: 0;
+         background: #00677e;
+         border-radius: 8px;
          min-width: 180px;
-         border-radius: 5px;
+         z-index: 100;
       }
 
       nav ul li ul li a {
          padding: 10px 15px;
+         color: white;
       }
 
-      nav ul li ul li a:hover {
-         background: #a63d59; /* más claro al pasar el ratón */
-      }
-
-      /* mostrar el submenú */
-      nav ul li:hover > ul {
+      nav ul li:hover>ul {
          display: block;
+      }
+
+      .principal {
+         width: 100%;
+         max-height: 700px;
+         object-fit: cover;
+         display: block;
+         background-color: #017f99;
+      }
+
+      .ayuntamiento {
+         background: #005f73;
+         color: white;
+         font-weight: bold;
+         display: inline-block;
+         padding: 12px 20px;
+         border-radius: 10px;
+         margin-top: 15px;
+         text-decoration: none;
+         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+         transition: background 0.3s, transform 0.3s;
+      }
+
+      .ayuntamiento:hover {
+         background: #00b4d8;
+         transform: scale(1.05);
+      }
+
+      form {
+         display: flex;
+         align-items: center;
+         background: white;
+         border-radius: 20px;
+         overflow: hidden;
+         padding: 2px 10px;
+      }
+
+      input[type="search"] {
+         border: none;
+         padding: 8px;
+         outline: none;
+         width: 180px;
+         font-size: 14px;
+      }
+
+      input[type="submit"] {
+         border: none;
+         background: #017f99;
+         color: white;
+         padding: 8px 14px;
+         border-radius: 15px;
+         cursor: pointer;
+         transition: background 0.3s;
+      }
+
+      input[type="submit"]:hover {
+         background: #00b4d8;
+      }
+
+      /* --- NUEVO: Botones adicionales --- */
+      .extras {
+         margin-top: 30px;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         gap: 15px;
+      }
+
+      .boton {
+         background: #005f73;
+         color: white;
+         padding: 12px 20px;
+         border-radius: 8px;
+         text-decoration: none;
+         font-weight: bold;
+         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+         transition: background 0.3s, transform 0.3s;
+      }
+
+      .boton:hover {
+         background: #00b4d8;
+         transform: scale(1.05);
       }
    </style>
 </head>
 
 <body>
    <center>
-   <!-- menú principal -->
-   <nav>
-      <ul>
-         <!-- Elemento simple sin subtema -->
-         <!-- Elemento con submenú -->
-         <li>
-                     <img src="logoss.png" width="130" height="130" align="center">
-                  </li>
-                  <li>
-                  <form method="get" action="https://www.google.com/search" target="_blank">
-    <input type="search" name="q" placeholder="Introducir búsqueda" autofocus required>
-    <input type="submit">
-  </form></li>
-</div>
-                  <li>
-            <p><a href="ciudadanoo.html">CIUDADANO</a></p>
-  
-         </li>
+      <nav>
+         <ul>
+            <li>
+               <a href="#" onclick="reproducirVideo()">
+                  <img src="logoss.png" width="130" height="130" alt="Logo CECYTEM" style="border-radius: 10px;">
+               </a>
+            </li>
 
-         <!-- Elemento con submenú -->
-         <li>
-            <p><a href="TRAMITE.HTML">TRAMITE</a></p>
-            <ul>
-               <p><a href="bvh.html">Administrativos</a></p>
-               <li><a href="gestionar.php">Gestionar Tramite</a></li>
-            </ul>
-         </li>
+            <li>
+               <form method="get" action="https://www.google.com/search" target="_blank">
+                  <input type="search" name="q" placeholder="Introducir búsqueda" autofocus required>
+                  <input type="submit" value="Buscar">
+               </form>
+            </li>
 
-         <li>
-            <p><a href="SOLICITUD.HTML">SOLICITUD</a></p>
-         </li>
+            <li><p><a href="ciudadanoo.html">CIUDADANO</a></p></li>
 
-         <!-- Elemento con submenú -->
-         <li>
-            <p><a href="PAGO.HTML">PAGO</a></p>
-            <ul>
-               <p><a href="serviciosyderechos.html">Servicios y Derechos</a></p>
-               <li><a href="#">…….</a></li>
-            </ul>
-         </li>
+            <li>
+               <p><a href="TRAMITE.HTML">TRÁMITE</a></p>
+               <ul>
+                  <li><a href="bvh.html">Administrativos</a></li>
+                  <li><a href="gestionar.php">Gestionar Trámite</a></li>
+               </ul>
+            </li>
 
-         <li>
-            <p><a href="DOCUMENTO.HTML">DOCUMENTO</a></p>
-            <ul>
-               <p><a href="galeria2.html">Galeria</a></p>
-            </ul>
-         </li>
+            <li><p><a href="SOLICITUD.HTML">SOLICITUD</a></p></li>
 
-         <li>
-            <p><a href="visitantes.HTML">VISITANTES</a></p>
-            <ul>
-               <p><a href="index2.php">REGISTRO</a></p>
+            <li>
+               <p><a href="PAGO.HTML">PAGO</a></p>
+               <ul>
+                  <li><a href="serviciosyderechos.html">Servicios y Derechos</a></li>
+                  <li><a href="http://201.144.206.190/">Pago de Predial</a></li>
+                  <li><a href="http://odapasvalledebravo.dyndns.org/Default.aspx">Pago de Agua</a></li>
+                  <li><a href="https://app.cfe.mx/Aplicaciones/CCFE/MiEspacio/login.aspx">Pago de Luz</a></li>
+                  <li><a href="https://telmex.com/pago_sin_login">Pago Teléfono/Internet</a></li>
+                  <li><a href="https://sseguridad.edomex.gob.mx/infracciones-transito">Multas de Tránsito</a></li>
+                  <li><a href="https://tenencia.edomex.gob.mx/">Tenencia/Refrendo Vehicular</a></li>
+                  <li><a href="https://www.gob.mx/sre/acciones-y-programas/opciones-para-realizar-el-pago-de-pasaporte">Pago de Pasaporte</a></li>
+                  <li><a href="https://smovilidad.edomex.gob.mx/licencias_permisos">Licencia de Conducir</a></li>
+               </ul>
+            </li>
 
-               
-               <li><a href="#">…….</a></li>
-            </ul>
-         </li>
-          <li>
-<a href="index3.php">
-    <img src="defis.png" alt="Ir al formulario" width="130" height="130" style="cursor:pointer;">
-</a>
-        </li>
+            <li>
+               <p><a href="DOCUMENTO.HTML">DOCUMENTO</a></p>
+               <ul>
+                  <li><a href="galeria2.html">Galería</a></li>
+               </ul>
+            </li>
 
-         <li>
-            <ul>
-               <p><a href="gestionar.php">GESTIONAR TRAMITES</a></p>
-            </ul>
-         </li>
-      </ul>
+            <li>
+               <p><a href="visitantes.HTML">VISITANTES</a></p>
+               <ul>
+                  <li><a href="index2.php">Registro</a></li>
+               </ul>
+            </li>
 
-</center>
+            <li>
+               <p><a href="menu8.HTML">OPCIONES DE PAGO Y UBICACIÓN</a></p>
+               <ul>
+                  <li><a href="menu8.HTML">Ver Opciones</a></li>
+               </ul>
+            </li>
 
-   </nav>
-<center>
-<img src="portada2.jpg"align="left"width="2000" height="1200">
-</center>
+            <li>
+               <p><a href="informacion.html">INFORMACIÓN</a></p>
+               <ul>
+                  <li><a href="informacion.html">Más Información</a></li>
+               </ul>
+            </li>
+
+            <li>
+               <a href="index3.php">
+                  <img src="defis.png" alt="Ir al formulario" width="130" height="130" style="cursor:pointer; border-radius: 10px;">
+               </a>
+            </li>
+         </ul>
+      </nav>
+
+      <!-- Mantiene solo esta imagen principal -->
+      <img src="111.jpg" alt="Imagen principal" class="principal">
+
+      <p>
+         <a href="https://share.google/Q5YCviwYntzpR3B4T" class="ayuntamiento">PORTAL AYUNTAMIENTO VALLE DE BRAVO</a>
+      </p>
+
+      <!-- 🔹 Sección con botones -->
+      <div class="extras">
+         <a href="#" class="boton" onclick="mostrarVideo()">🎥 Ver Video</a>
+         <a href="documento1.pdf" class="boton" download>📄 Descargar Documento</a>
+      </div>
+   </center>
+
+   <script>
+      function reproducirVideo() {
+         const video = document.createElement("video");
+         video.src = "video5.mp4";
+         video.controls = true;
+         video.autoplay = true;
+         video.style.width = "80%";
+         video.style.borderRadius = "15px";
+         video.style.margin = "20px auto";
+         document.body.innerHTML = "";
+         document.body.appendChild(video);
+      }
+
+      function mostrarVideo() {
+         const video = document.createElement("video");
+         video.src = "vide444.mp4";
+         video.controls = true;
+         video.autoplay = true;
+         video.style.width = "80%";
+         video.style.borderRadius = "15px";
+         video.style.margin = "20px auto";
+         document.body.innerHTML = "";
+         document.body.appendChild(video);
+      }
+   </script>
 </body>
 </html>
