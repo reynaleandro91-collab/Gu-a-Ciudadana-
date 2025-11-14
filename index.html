@@ -319,4 +319,25 @@
    </script>
 
 </body>
+   <!-- Ventana para reproducir videos -->
+<div id="videoOverlay" class="overlay">
+    <div class="video-container">
+        <button class="cerrar" onclick="cerrarVideo()">✖</button>
+        <video id="videoPlayer" autoplay controls style="width:100%; border-radius:10px;"></video>
+    </div>
+</div>
+
+<script>
+function mostrarVideo() {
+    document.getElementById("videoPlayer").src = "vide44.mp4";
+    document.getElementById("videoOverlay").style.display = "flex";
+}
+
+function cerrarVideo() {
+    let player = document.getElementById("videoPlayer");
+    player.pause();
+    player.src = "";
+    document.getElementById("videoOverlay").style.display = "none";
+}
+</script>
 </html>
