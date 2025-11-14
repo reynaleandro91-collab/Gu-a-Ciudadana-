@@ -100,7 +100,6 @@
          transform: scale(1.05);
       }
 
-      /* BOTONES */
       .extras {
          margin-top: 30px;
          display: flex;
@@ -134,7 +133,6 @@
          width: 100%;
          height: 100%;
          background: rgba(0, 0, 0, 0.8);
-         display: flex;
          align-items: center;
          justify-content: center;
          z-index: 1000;
@@ -234,7 +232,6 @@
          </ul>
       </nav>
 
-      <!-- Imagen principal -->
       <img src="113.jpg" alt="Imagen principal" class="principal">
 
       <p>
@@ -243,7 +240,6 @@
          </a>
       </p>
 
-      <!-- BOTONES A LOS LADOS -->
       <div class="extras">
          <a href="#" class="boton" onclick="mostrarVideo('vide44.mp4')">🎥 Ver Video</a>
          <a href="documento1.pdf" class="boton" download>📄 Descargar Documento</a>
@@ -254,19 +250,22 @@
    <!-- OVERLAY VIDEO -->
    <div id="overlay">
       <span id="cerrarVideo" onclick="cerrarVideo()">✖</span>
-      <video id="videoPlayer" controls autoplay></video>
+      <video id="videoPlayer" controls></video>
    </div>
 
    <script>
       function mostrarVideo(archivo) {
          document.getElementById("overlay").style.display = "flex";
-         document.getElementById("videoPlayer").src = archivo;
+         const video = document.getElementById("videoPlayer");
+         video.src = archivo;
+         video.play();
       }
 
       function cerrarVideo() {
+         const video = document.getElementById("videoPlayer");
+         video.pause();
+         video.src = "";
          document.getElementById("overlay").style.display = "none";
-         document.getElementById("videoPlayer").pause();
-         document.getElementById("videoPlayer").src = "";
       }
    </script>
 
