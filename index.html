@@ -2,296 +2,347 @@
 <html lang="es">
 
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <script src="maestra.js"></script>
-   <title>GUIA DIGITAL CIUDADANA</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GUIA DIGITAL CIUDADANA</title>
 
-   <!-- Fuente moderna -->
-   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Fuente moderna -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-   <style>
-      body {
-         margin: 0;
-         font-family: 'Poppins', sans-serif;
-         background: linear-gradient(to bottom, #0186a1, #01a1c1);
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #0186a1, #01a1c1);
+    }
+
+    /* Menú horizontal */
+    nav {
+      background: #017f99;
+      overflow-x: auto;
+      white-space: nowrap;
+      padding: 10px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: inline-flex;
+      white-space: nowrap;
+      align-items: center;
+    }
+
+    nav ul li {
+      display: inline-block;
+      margin: 0 8px;
+      position: relative;
+      white-space: nowrap;
+    }
+
+    nav ul li a {
+      padding: 15px 20px;
+      display: inline-block;
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    nav ul li a:hover {
+      background: #00c3de;
+    }
+
+    nav ul li ul {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #00677e;
+      border-radius: 8px;
+      min-width: 180px;
+      z-index: 10;
+    }
+
+    nav ul li:hover > ul {
+      display: block;
+    }
+
+    /* Imagen principal */
+    .principal {
+      width: 100%;
+      max-height: 700px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .ayuntamiento {
+      background: #005f73;
+      color: white;
+      font-weight: bold;
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      margin-top: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: .3s;
+    }
+
+    .ayuntamiento:hover {
+      background: #00b4d8;
+      transform: scale(1.05);
+    }
+
+    /* Extras (botones) */
+    .extras {
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    .boton {
+      background: #005f73;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: .3s;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .boton:hover {
+      background: #00b4d8;
+      transform: scale(1.05);
+    }
+
+    /* Overlay (oculto hasta abrir video) */
+    #video-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 20px;
+    }
+
+    #video-overlay .video-box {
+      width: 100%;
+      max-width: 900px;
+      position: relative;
+    }
+
+    #video-overlay video {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block;
+    }
+
+    #video-overlay .close-btn {
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      background: #ff5c5c;
+      color: #fff;
+      border: none;
+      padding: 10px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    /* Mobile: mantén menú deslizable y extras en columna si es muy pequeño */
+    @media (max-width: 520px) {
+      .extras {
+        flex-direction: column;
+        align-items: stretch;
       }
-
-      nav {
-         background: #017f99;
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         flex-wrap: wrap;
-         padding: 10px;
-      }
-
-      nav ul {
-         list-style: none;
-         margin: 0;
-         padding: 0;
-         display: flex;
-         flex-wrap: wrap;
-         justify-content: center;
-         align-items: center;
-      }
-
-      nav ul li {
-         position: relative;
-         margin: 0 8px;
-      }
-
-      nav ul li a {
-         display: block;
-         padding: 15px 20px;
-         color: white;
-         text-decoration: none;
-         font-weight: 600;
-         border-radius: 8px;
-         transition: background 0.3s;
-      }
-
-      nav ul li a:hover {
-         background: #00c3de;
-      }
-
-      nav ul li ul {
-         display: none;
-         position: absolute;
-         top: 100%;
-         left: 0;
-         background: #00677e;
-         border-radius: 8px;
-         min-width: 180px;
-         z-index: 100;
-      }
-
-      nav ul li ul li a {
-         padding: 10px 15px;
-         color: white;
-      }
-
-      nav ul li:hover>ul {
-         display: block;
-      }
-
-      .principal {
-         width: 100%;
-         max-height: 700px;
-         object-fit: cover;
-         display: block;
-         background-color: #017f99;
-      }
-
-      .ayuntamiento {
-         background: #005f73;
-         color: white;
-         font-weight: bold;
-         display: inline-block;
-         padding: 12px 20px;
-         border-radius: 10px;
-         margin-top: 15px;
-         text-decoration: none;
-         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-         transition: background 0.3s, transform 0.3s;
-      }
-
-      .ayuntamiento:hover {
-         background: #00b4d8;
-         transform: scale(1.05);
-      }
-
-      /* 🔹 Barra donde los botones quedan uno a cada lado */
-      .barra-extras {
-         margin-top: 30px;
-         width: 90%;
-         display: flex;
-         justify-content: space-between;
-         align-items: center;
-      }
-
-      .boton {
-         background: #005f73;
-         color: white;
-         padding: 12px 20px;
-         border-radius: 8px;
-         text-decoration: none;
-         font-weight: bold;
-         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-         transition: background 0.3s, transform 0.3s;
-      }
-
-      .boton:hover {
-         background: #00b4d8;
-         transform: scale(1.05);
-      }
-
-      /* 🔹 Overlay del video */
-      .overlay {
-         position: fixed;
-         top: 0;
-         left: 0;
-         width: 100%;
-         height: 100%;
-         background: rgba(0, 0, 0, 0.8);
-         display: none;
-         justify-content: center;
-         align-items: center;
-         z-index: 9999;
-      }
-
-      .video-container {
-         width: 80%;
-         max-width: 800px;
-         position: relative;
-      }
-
-      .cerrar {
-         position: absolute;
-         top: -10px;
-         right: -10px;
-         background: red;
-         border: none;
-         color: white;
-         font-size: 20px;
-         border-radius: 50%;
-         cursor: pointer;
-         width: 35px;
-         height: 35px;
-      }
-   </style>
+    }
+  </style>
 </head>
 
 <body>
-   <center>
+  <nav>
+    <ul>
+      <!-- Logo que abre video5 (si lo quieres) -->
+      <li>
+        <a href="javascript:void(0)" onclick="reproducirLogo(event)">
+          <img src="logoss.png" width="110" height="110" style="border-radius:10px;" alt="Logo">
+        </a>
+      </li>
 
-      <nav>
-         <ul>
-            <li>
-               <a href="#" onclick="reproducirVideo()">
-                  <img src="logoss.png" width="130" height="130" alt="Logo CECYTEM" style="border-radius: 10px;">
-               </a>
-            </li>
+      <!-- Buscador -->
+      <li>
+        <form method="get" action="https://www.google.com/search" target="_blank" style="display:inline-flex;">
+          <input type="search" name="q" placeholder="Introducir búsqueda" required
+            style="padding:8px;border-radius:10px;border:none;outline:none;">
+          <input type="submit" value="Buscar"
+            style="border:none;background:#017f99;color:white;padding:8px 12px;border-radius:10px;margin-left:6px;">
+        </form>
+      </li>
 
-            <li>
-               <form method="get" action="https://www.google.com/search" target="_blank">
-                  <input type="search" name="q" placeholder="Introducir búsqueda" autofocus required>
-                  <input type="submit" value="Buscar">
-               </form>
-            </li>
+      <li><a href="ciudadanoo.html">CIUDADANO</a></li>
 
-            <li><p><a href="ciudadanoo.html">CIUDADANO</a></p></li>
+      <li>
+        <a href="TRAMITE.HTML">TRÁMITE</a>
+        <ul>
+          <li><a href="bvh.html">Administrativos</a></li>
+          <li><a href="gestionar.php">Gestionar Trámite</a></li>
+        </ul>
+      </li>
 
-            <li>
-               <p><a href="TRAMITE.HTML">TRÁMITE</a></p>
-               <ul>
-                  <li><a href="bvh.html">Administrativos</a></li>
-                  <li><a href="gestionar.php">Gestionar Trámite</a></li>
-               </ul>
-            </li>
+      <li><a href="SOLICITUD.HTML">SOLICITUD</a></li>
 
-            <li><p><a href="SOLICITUD.HTML">SOLICITUD</a></p></li>
+      <li>
+        <a href="PAGO.HTML">PAGO</a>
+        <ul>
+          <li><a href="serviciosyderechos.html">Servicios y Derechos</a></li>
+          <li><a href="http://201.144.206.190/">Pago Predial</a></li>
+          <li><a href="http://odapasvalledebravo.dyndns.org/Default.aspx">Pago Agua</a></li>
+        </ul>
+      </li>
 
-            <li>
-               <p><a href="PAGO.HTML">PAGO</a></p>
-               <ul>
-                  <li><a href="serviciosyderechos.html">Servicios y Derechos</a></li>
-                  <li><a href="http://201.144.206.190/">Pago de Predial</a></li>
-                  <li><a href="http://odapasvalledebravo.dyndns.org/Default.aspx">Pago de Agua</a></li>
-                  <li><a href="https://app.cfe.mx/Aplicaciones/CCFE/MiEspacio/login.aspx">Pago de Luz</a></li>
-                  <li><a href="https://telmex.com/pago_sin_login">Pago Teléfono/Internet</a></li>
-                  <li><a href="https://sseguridad.edomex.gob.mx/infracciones-transito">Multas de Tránsito</a></li>
-                  <li><a href="https://tenencia.edomex.gob.mx/">Tenencia/Refrendo Vehicular</a></li>
-                  <li><a href="https://www.gob.mx/sre/acciones-y-programas/opciones-para-realizar-el-pago-de-pasaporte">Pago de Pasaporte</a></li>
-                  <li><a href="https://smovilidad.edomex.gob.mx/licencias_permisos">Licencia de Conducir</a></li>
-               </ul>
-            </li>
+      <li>
+        <a href="DOCUMENTO.HTML">DOCUMENTO</a>
+        <ul>
+          <li><a href="galeria2.html">Galería</a></li>
+        </ul>
+      </li>
 
-            <li>
-               <p><a href="DOCUMENTO.HTML">DOCUMENTO</a></p>
-               <ul>
-                  <li><a href="galeria2.html">Galería</a></li>
-               </ul>
-            </li>
+      <li>
+        <a href="visitantes.HTML">VISITANTES</a>
+        <ul>
+          <li><a href="index2.php">Registro</a></li>
+        </ul>
+      </li>
 
-            <li>
-               <p><a href="visitantes.HTML">VISITANTES</a></p>
-               <ul>
-                  <li><a href="index2.php">Registro</a></li>
-               </ul>
-            </li>
+      <li><a href="menu8.HTML">OPCIONES DE PAGO Y UBICACIÓN</a></li>
+      <li><a href="informacion.html">INFORMACIÓN</a></li>
+    </ul>
+  </nav>
 
-            <li>
-               <p><a href="menu8.HTML">OPCIONES DE PAGO Y UBICACIÓN</a></p>
-               <ul>
-                  <li><a href="menu8.HTML">Ver Opciones</a></li>
-               </ul>
-            </li>
+  <!-- Imagen principal -->
+  <img src="111.jpg" alt="Imagen principal" class="principal">
 
-            <li>
-               <p><a href="informacion.html">INFORMACIÓN</a></p>
-               <ul>
-                  <li><a href="informacion.html">Más Información</a></li>
-               </ul>
-            </li>
+  <center>
+    <p>
+      <a href="https://share.google/Q5YCviwYntzpR3B4T" class="ayuntamiento">PORTAL AYUNTAMIENTO VALLE DE BRAVO</a>
+    </p>
+  </center>
 
-            <li>
-               <a href="index3.php">
-                  <img src="defis.png" alt="Ir al formulario" width="130" height="130" style="cursor:pointer; border-radius: 10px;">
-               </a>
-            </li>
-         </ul>
-      </nav>
+  <!-- Botones extras -->
+  <div class="extras">
+    <a href="javascript:void(0)" class="boton" id="btn-ver" onclick="abrirVideo(event, 'vide444.mp4')">🎥 Ver Video</a>
+    <a href="documento1.pdf" class="boton" download>📄 Descargar Documento</a>
+  </div>
 
-      <!-- Imagen principal -->
-      <img src="113.jpg" alt="Imagen principal" class="principal">
+  <!-- OVERLAY (se muestra/oculta desde JS) -->
+  <div id="video-overlay" aria-hidden="true">
+    <div class="video-box">
+      <button class="close-btn" id="close-video">Cerrar ✖</button>
+      <video id="main-video" controls playsinline webkit-playsinline></video>
+    </div>
+  </div>
 
-      <p>
-         <a href="https://share.google/Q5YCviwYntzpR3B4T" class="ayuntamiento">PORTAL AYUNTAMIENTO VALLE DE BRAVO</a>
-      </p>
+  <script>
+    // función reusable para abrir el overlay con el video indicado
+    function abrirVideo(e, archivo) {
+      if (e) e.preventDefault();
+      const overlay = document.getElementById('video-overlay');
+      const videoEl = document.getElementById('main-video');
 
-      <!-- 🔹 Botones en esquinas opuestas -->
-      <div class="barra-extras">
-         <a href="#" class="boton" onclick="mostrarVideo()">🎥 Ver Video</a>
-         <a href="documento1.pdf" class="boton" download>📄 Descargar Documento</a>
-      </div>
+      // Si ya hay otro src, pausarlo y limpiarlo primero (seguridad)
+      if (!overlay || !videoEl) return;
 
-   </center>
+      // Setear src correcto (asegúrate que el archivo exista en tu servidor)
+      videoEl.src = archivo;
+      videoEl.currentTime = 0;
 
-   <!-- 🔹 Overlay para reproducir videos -->
-   <div id="videoOverlay" class="overlay">
-      <div class="video-container">
-         <button class="cerrar" onclick="cerrarVideo()">✖</button>
-         <video id="videoPlayer" controls autoplay style="width:100%; border-radius:10px;"></video>
-      </div>
-   </div>
+      // Mostrar overlay y reproducir
+      overlay.style.display = 'flex';
+      overlay.setAttribute('aria-hidden', 'false');
 
-   <script>
-      function mostrarVideo() {
-         let overlay = document.getElementById("videoOverlay");
-         let player = document.getElementById("videoPlayer");
+      // Intenta reproducir (algunos móviles requieren interacción del usuario)
+      videoEl.play().catch(function(err){
+        // si autoplay es bloqueado, el video quedará listo y el usuario puede darle play
+        console.log('Autoplay bloqueado o pendiente: ', err);
+      });
 
-         player.src = "vide44.mp4";
-         overlay.style.display = "flex";
+      // En caso de que el usuario presione fuera del video (clic en overlay), cerramos también
+      overlay.addEventListener('click', overlayClickClose);
+      // También escap (ESC) para cerrar
+      document.addEventListener('keydown', escKeyClose);
+    }
+
+    function overlayClickClose(ev) {
+      // si el click fue en el overlay (no en la caja interna), cerrar
+      const box = document.querySelector('#video-overlay .video-box');
+      if (!box) return;
+      if (!box.contains(ev.target)) {
+        cerrarVideo();
+      }
+    }
+
+    function escKeyClose(ev) {
+      if (ev.key === 'Escape') cerrarVideo();
+    }
+
+    // cerrarVideo: pausa, limpia src y oculta overlay de forma segura
+    function cerrarVideo() {
+      const overlay = document.getElementById('video-overlay');
+      const videoEl = document.getElementById('main-video');
+      if (!overlay || !videoEl) return;
+
+      // Quitar listeners añadidos
+      overlay.removeEventListener('click', overlayClickClose);
+      document.removeEventListener('keydown', escKeyClose);
+
+      // Pausar y limpiar el video
+      try {
+        videoEl.pause();
+        // limpiar source para liberar memoria y evitar reproducción en background
+        videoEl.removeAttribute('src');
+        videoEl.load();
+      } catch (e) {
+        console.warn('Error limpiando video:', e);
       }
 
-      function reproducirVideo() {
-         let overlay = document.getElementById("videoOverlay");
-         let player = document.getElementById("videoPlayer");
+      // Ocultar overlay (no toques el body)
+      overlay.style.display = 'none';
+      overlay.setAttribute('aria-hidden', 'true');
+    }
 
-         player.src = "video5.mp4";
-         overlay.style.display = "flex";
+    // botón cerrar dentro del overlay
+    document.getElementById('close-video').addEventListener('click', function (e) {
+      e.preventDefault();
+      cerrarVideo();
+    });
+
+    // función usada por el logo si quieres reproducir video5.mp4
+    function reproducirLogo(e) {
+      if (e) e.preventDefault();
+      abrirVideo(null, 'video5.mp4');
+    }
+
+    // seguridad: evitar que enlaces con href="#" causen salto de página si quedan
+    document.addEventListener('click', function (e) {
+      const a = e.target.closest && e.target.closest('a[href="#"]');
+      if (a) {
+        e.preventDefault();
       }
-
-      function cerrarVideo() {
-         let overlay = document.getElementById("videoOverlay");
-         let player = document.getElementById("videoPlayer");
-
-         player.pause();
-         player.src = "";
-         overlay.style.display = "none";
-      }
-   </script>
-
+    });
+  </script>
 </body>
 </html>
