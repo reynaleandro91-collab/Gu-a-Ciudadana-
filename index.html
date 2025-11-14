@@ -4,16 +4,12 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <script src="maestra.js"></script>
    <title>GUIA DIGITAL CIUDADANA</title>
-
-   <!-- Fuente moderna -->
-   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
    <style>
       body {
          margin: 0;
-         font-family: 'Poppins', sans-serif;
+         font-family: Arial, sans-serif;
          background: linear-gradient(to bottom, #0186a1, #01a1c1);
       }
 
@@ -21,60 +17,36 @@
          background: #017f99;
          display: flex;
          justify-content: center;
-         align-items: center;
          flex-wrap: wrap;
          padding: 10px;
       }
 
       nav ul {
-         list-style: none;
-         margin: 0;
-         padding: 0;
          display: flex;
+         list-style: none;
+         padding: 0;
          flex-wrap: wrap;
-         justify-content: center;
-         align-items: center;
       }
 
       nav ul li {
-         position: relative;
          margin: 0 8px;
+         position: relative;
       }
 
       nav ul li a {
-         display: block;
-         padding: 15px 20px;
          color: white;
          text-decoration: none;
-         font-weight: 600;
-         border-radius: 8px;
-         transition: background 0.3s;
+         padding: 12px 18px;
+         display: block;
+         font-weight: bold;
       }
 
       nav ul li a:hover {
          background: #00c3de;
-      }
-
-      nav ul li ul {
-         display: none;
-         position: absolute;
-         top: 100%;
-         left: 0;
-         background: #00677e;
          border-radius: 8px;
-         min-width: 180px;
-         z-index: 100;
       }
 
-      nav ul li ul li a {
-         padding: 10px 15px;
-         color: white;
-      }
-
-      nav ul li:hover>ul {
-         display: block;
-      }
-
+      /* Imagen principal */
       .principal {
          width: 100%;
          max-height: 700px;
@@ -82,47 +54,19 @@
          display: block;
       }
 
-      .ayuntamiento {
-         background: #005f73;
-         color: white;
-         font-weight: bold;
-         display: inline-block;
-         padding: 12px 20px;
-         border-radius: 10px;
-         margin-top: 15px;
-         text-decoration: none;
-         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-         transition: background 0.3s, transform 0.3s;
-      }
-
-      .ayuntamiento:hover {
-         background: #00b4d8;
-         transform: scale(1.05);
-      }
-
-      /* BOTONES */
-      .extras {
-         margin-top: 30px;
-         display: flex;
-         justify-content: space-between;
-         width: 90%;
-         max-width: 900px;
-      }
-
       .boton {
          background: #005f73;
          color: white;
-         padding: 12px 20px;
-         border-radius: 8px;
+         padding: 12px 18px;
          text-decoration: none;
+         border-radius: 8px;
          font-weight: bold;
-         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-         transition: background 0.3s, transform 0.3s;
+         margin: 20px;
+         display: inline-block;
       }
 
       .boton:hover {
          background: #00b4d8;
-         transform: scale(1.05);
       }
 
       /* OVERLAY VIDEO */
@@ -133,25 +77,24 @@
          left: 0;
          width: 100%;
          height: 100%;
-         background: rgba(0, 0, 0, 0.8);
-         display: flex;
-         align-items: center;
+         background: rgba(0,0,0,0.85);
          justify-content: center;
-         z-index: 1000;
+         align-items: center;
+         z-index: 9999;
       }
 
       #overlay video {
-         width: 80%;
+         width: 85%;
          max-width: 700px;
-         border-radius: 15px;
+         border-radius: 10px;
       }
 
       #cerrarVideo {
          position: absolute;
          top: 20px;
          right: 20px;
-         font-size: 30px;
          color: white;
+         font-size: 35px;
          cursor: pointer;
          font-weight: bold;
       }
@@ -163,111 +106,58 @@
    <center>
       <nav>
          <ul>
-            <li>
-               <a href="#" onclick="mostrarVideo('video5.mp4')">
-                  <img src="logoss.png" width="130" height="130" alt="Logo CECYTEM" style="border-radius: 10px;">
-               </a>
-            </li>
-
-            <li>
-               <form method="get" action="https://www.google.com/search" target="_blank">
-                  <input type="search" name="q" placeholder="Introducir búsqueda" autofocus required>
-                  <input type="submit" value="Buscar">
-               </form>
-            </li>
-
-            <li><p><a href="ciudadanoo.html">CIUDADANO</a></p></li>
-
-            <li>
-               <p><a href="TRAMITE.HTML">TRÁMITE</a></p>
-               <ul>
-                  <li><a href="bvh.html">Administrativos</a></li>
-                  <li><a href="gestionar.php">Gestionar Trámite</a></li>
-               </ul>
-            </li>
-
-            <li><p><a href="SOLICITUD.HTML">SOLICITUD</a></p></li>
-
-            <li>
-               <p><a href="PAGO.HTML">PAGO</a></p>
-               <ul>
-                  <li><a href="serviciosyderechos.html">Servicios y Derechos</a></li>
-                  <li><a href="http://201.144.206.190/">Pago de Predial</a></li>
-                  <li><a href="http://odapasvalledebravo.dyndns.org/Default.aspx">Pago de Agua</a></li>
-                  <li><a href="https://app.cfe.mx/Aplicaciones/CCFE/MiEspacio/login.aspx">Pago de Luz</a></li>
-                  <li><a href="https://telmex.com/pago_sin_login">Pago Teléfono/Internet</a></li>
-                  <li><a href="https://sseguridad.edomex.gob.mx/infracciones-transito">Multas de Tránsito</a></li>
-                  <li><a href="https://tenencia.edomex.gob.mx/">Tenencia/Refrendo Vehicular</a></li>
-                  <li><a href="https://www.gob.mx/sre/acciones-y-programas/opciones-para-realizar-el-pago-de-pasaporte">Pago de Pasaporte</a></li>
-                  <li><a href="https://smovilidad.edomex.gob.mx/licencias_permisos">Licencia de Conducir</a></li>
-               </ul>
-            </li>
-
-            <li>
-               <p><a href="DOCUMENTO.HTML">DOCUMENTO</a></p>
-               <ul>
-                  <li><a href="galeria2.html">Galería</a></li>
-               </ul>
-            </li>
-
-            <li>
-               <p><a href="visitantes.HTML">VISITANTES</a></p>
-               <ul>
-                  <li><a href="index2.php">Registro</a></li>
-               </ul>
-            </li>
-
-            <li>
-               <p><a href="menu8.HTML">OPCIONES DE PAGO Y UBICACIÓN</a></p>
-               <ul>
-                  <li><a href="menu8.HTML">Ver Opciones</a></li>
-               </ul>
-            </li>
-
-            <li>
-               <p><a href="informacion.html">INFORMACIÓN</a></p>
-               <ul>
-                  <li><a href="informacion.html">Más Información</a></li>
-               </ul>
-            </li>
-
+            <li><a href="ciudadanoo.html">CIUDADANO</a></li>
+            <li><a href="TRAMITE.HTML">TRÁMITE</a></li>
+            <li><a href="SOLICITUD.HTML">SOLICITUD</a></li>
+            <li><a href="PAGO.HTML">PAGO</a></li>
+            <li><a href="DOCUMENTO.HTML">DOCUMENTO</a></li>
+            <li><a href="visitantes.HTML">VISITANTES</a></li>
+            <li><a href="menu8.HTML">PAGO Y UBICACIÓN</a></li>
+            <li><a href="informacion.html">INFORMACIÓN</a></li>
          </ul>
       </nav>
 
-      <!-- Imagen principal -->
-      <img src="113.jpg" alt="Imagen principal" class="principal">
+      <!-- IMAGEN PRINCIPAL -->
+      <img src="113.jpg" class="principal">
 
-      <p>
-         <a href="https://share.google/Q5YCviwYntzpR3B4T" class="ayuntamiento">
-            PORTAL AYUNTAMIENTO VALLE DE BRAVO
-         </a>
-      </p>
-
-      <!-- BOTONES A LOS LADOS -->
-      <div class="extras">
-         <a href="#" class="boton" onclick="mostrarVideo('vide44.mp4')">🎥 Ver Video</a>
-         <a href="documento1.pdf" class="boton" download>📄 Descargar Documento</a>
-      </div>
-
+      <!-- BOTÓN PARA VER VIDEO -->
+      <a href="#" class="boton" onclick="mostrarVideo('vide444.mp4')">🎥 Ver Video</a>
    </center>
 
    <!-- OVERLAY VIDEO -->
    <div id="overlay">
       <span id="cerrarVideo" onclick="cerrarVideo()">✖</span>
-      <video id="videoPlayer" controls autoplay></video>
+      <video id="videoPlayer" controls></video>
    </div>
 
    <script>
       function mostrarVideo(archivo) {
-         document.getElementById("overlay").style.display = "flex";
-         document.getElementById("videoPlayer").src = archivo;
+         let overlay = document.getElementById("overlay");
+         let video = document.getElementById("videoPlayer");
+
+         overlay.style.display = "flex";
+         video.src = archivo;
+
+         video.play();
+
+         // Evita que el botón atrás cierre la página
+         history.pushState(null, null, location.href);
       }
 
       function cerrarVideo() {
-         document.getElementById("overlay").style.display = "none";
-         document.getElementById("videoPlayer").pause();
-         document.getElementById("videoPlayer").src = "";
+         let overlay = document.getElementById("overlay");
+         let video = document.getElementById("videoPlayer");
+
+         video.pause();
+         video.src = "";
+         overlay.style.display = "none";
       }
+
+      // Evita salir de la página con botón atrás mientras el video está abierto
+      window.onpopstate = function () {
+         cerrarVideo();
+         history.pushState(null, null, location.href);
+      };
    </script>
 
 </body>
