@@ -7,6 +7,7 @@
    <script src="maestra.js"></script>
    <title>GUIA DIGITAL CIUDADANA</title>
 
+   <!-- Fuente moderna -->
    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
    <style>
@@ -16,39 +17,38 @@
          background: linear-gradient(to bottom, #0186a1, #01a1c1);
       }
 
-      /* --- MENÚ SIEMPRE HORIZONTAL --- */
       nav {
-         width: 100%;
          background: #017f99;
-         overflow-x: auto;
-         white-space: nowrap;
-         -webkit-overflow-scrolling: touch;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         flex-wrap: wrap;
+         padding: 10px;
       }
 
       nav ul {
-         display: inline-flex;
-         padding: 0;
-         margin: 0;
          list-style: none;
-         white-space: nowrap;
+         margin: 0;
+         padding: 0;
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: center;
+         align-items: center;
       }
 
       nav ul li {
-         display: inline-block;
-         margin: 0 10px;
          position: relative;
-         white-space: nowrap;
+         margin: 0 8px;
       }
 
       nav ul li a {
-         display: inline-block;
+         display: block;
          padding: 15px 20px;
          color: white;
          text-decoration: none;
          font-weight: 600;
          border-radius: 8px;
          transition: background 0.3s;
-         white-space: nowrap;
       }
 
       nav ul li a:hover {
@@ -66,17 +66,21 @@
          z-index: 100;
       }
 
+      nav ul li ul li a {
+         padding: 10px 15px;
+         color: white;
+      }
+
       nav ul li:hover>ul {
          display: block;
       }
 
-      /* Imagen principal responsiva */
       .principal {
          width: 100%;
-         height: auto;
-         display: block;
-         max-height: 500px;
+         max-height: 700px;
          object-fit: cover;
+         display: block;
+         background-color: #017f99;
       }
 
       .ayuntamiento {
@@ -97,13 +101,44 @@
          transform: scale(1.05);
       }
 
-      /* Botones "Ver video" y "Descargar Documento" */
-      .extras {
-         width: 100%;
+      form {
          display: flex;
-         justify-content: space-between;
-         padding: 20px;
-         box-sizing: border-box;
+         align-items: center;
+         background: white;
+         border-radius: 20px;
+         overflow: hidden;
+         padding: 2px 10px;
+      }
+
+      input[type="search"] {
+         border: none;
+         padding: 8px;
+         outline: none;
+         width: 180px;
+         font-size: 14px;
+      }
+
+      input[type="submit"] {
+         border: none;
+         background: #017f99;
+         color: white;
+         padding: 8px 14px;
+         border-radius: 15px;
+         cursor: pointer;
+         transition: background 0.3s;
+      }
+
+      input[type="submit"]:hover {
+         background: #00b4d8;
+      }
+
+      /* --- NUEVO: Botones adicionales --- */
+      .extras {
+         margin-top: 30px;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         gap: 15px;
       }
 
       .boton {
@@ -121,99 +156,127 @@
          background: #00b4d8;
          transform: scale(1.05);
       }
-
-      /* VIDEO FULLSCREEN SIN SALIR DE LA PÁGINA */
-      #video-container {
-         position: fixed;
-         top: 0;
-         left: 0;
-         width: 100%;
-         height: 100%;
-         background: rgba(0, 0, 0, 0.8);
-         display: none;
-         justify-content: center;
-         align-items: center;
-         padding: 20px;
-         z-index: 9999;
-      }
-
-      #video-container video {
-         width: 90%;
-         max-width: 700px;
-         border-radius: 15px;
-      }
-
-      #cerrarVideo {
-         position: absolute;
-         top: 20px;
-         right: 20px;
-         background: #ff4444;
-         color: white;
-         border: none;
-         padding: 10px 15px;
-         border-radius: 8px;
-         cursor: pointer;
-         font-size: 18px;
-      }
    </style>
 </head>
 
 <body>
-
-   <nav>
-      <ul>
-         <li><a href="#" onclick="mostrarVideo('video5.mp4')"><img src="logoss.png" width="90" style="border-radius:10px;"></a></li>
-
-         <li>
-            <form method="get" action="https://www.google.com/search" target="_blank" style="display:inline-flex;">
-               <input type="search" name="q" placeholder="Buscar" required style="padding:8px; border-radius:8px; border:none;">
-               <input type="submit" value="Buscar" style="padding:8px; background:#005f73; border:none; color:white; border-radius:8px;">
-            </form>
-         </li>
-
-         <li><a href="ciudadanoo.html">CIUDADANO</a></li>
-         <li><a href="TRAMITE.HTML">TRÁMITE</a></li>
-         <li><a href="SOLICITUD.HTML">SOLICITUD</a></li>
-         <li><a href="PAGO.HTML">PAGO</a></li>
-         <li><a href="DOCUMENTO.HTML">DOCUMENTO</a></li>
-         <li><a href="visitantes.HTML">VISITANTES</a></li>
-         <li><a href="menu8.HTML">PAGO/UBICACIÓN</a></li>
-         <li><a href="informacion.html">INFORMACIÓN</a></li>
-
-         <li><a href="index3.php"><img src="defis.png" width="90" style="border-radius:10px;"></a></li>
-      </ul>
-   </nav>
-
-   <img src="113.jpg" class="principal">
-
    <center>
-      <p><a href="https://share.google/Q5YCviwYntzpR3B4T" class="ayuntamiento">PORTAL AYUNTAMIENTO VALLE DE BRAVO</a></p>
+      <nav>
+         <ul>
+            <li>
+               <a href="#" onclick="reproducirVideo()">
+                  <img src="logoss.png" width="130" height="130" alt="Logo CECYTEM" style="border-radius: 10px;">
+               </a>
+            </li>
+
+            <li>
+               <form method="get" action="https://www.google.com/search" target="_blank">
+                  <input type="search" name="q" placeholder="Introducir búsqueda" autofocus required>
+                  <input type="submit" value="Buscar">
+               </form>
+            </li>
+
+            <li><p><a href="ciudadanoo.html">CIUDADANO</a></p></li>
+
+            <li>
+               <p><a href="TRAMITE.HTML">TRÁMITE</a></p>
+               <ul>
+                  <li><a href="bvh.html">Administrativos</a></li>
+                  <li><a href="gestionar.php">Gestionar Trámite</a></li>
+               </ul>
+            </li>
+
+            <li><p><a href="SOLICITUD.HTML">SOLICITUD</a></p></li>
+
+            <li>
+               <p><a href="PAGO.HTML">PAGO</a></p>
+               <ul>
+                  <li><a href="serviciosyderechos.html">Servicios y Derechos</a></li>
+                  <li><a href="http://201.144.206.190/">Pago de Predial</a></li>
+                  <li><a href="http://odapasvalledebravo.dyndns.org/Default.aspx">Pago de Agua</a></li>
+                  <li><a href="https://app.cfe.mx/Aplicaciones/CCFE/MiEspacio/login.aspx">Pago de Luz</a></li>
+                  <li><a href="https://telmex.com/pago_sin_login">Pago Teléfono/Internet</a></li>
+                  <li><a href="https://sseguridad.edomex.gob.mx/infracciones-transito">Multas de Tránsito</a></li>
+                  <li><a href="https://tenencia.edomex.gob.mx/">Tenencia/Refrendo Vehicular</a></li>
+                  <li><a href="https://www.gob.mx/sre/acciones-y-programas/opciones-para-realizar-el-pago-de-pasaporte">Pago de Pasaporte</a></li>
+                  <li><a href="https://smovilidad.edomex.gob.mx/licencias_permisos">Licencia de Conducir</a></li>
+               </ul>
+            </li>
+
+            <li>
+               <p><a href="DOCUMENTO.HTML">DOCUMENTO</a></p>
+               <ul>
+                  <li><a href="galeria2.html">Galería</a></li>
+               </ul>
+            </li>
+
+            <li>
+               <p><a href="visitantes.HTML">VISITANTES</a></p>
+               <ul>
+                  <li><a href="index2.php">Registro</a></li>
+               </ul>
+            </li>
+
+            <li>
+               <p><a href="menu8.HTML">OPCIONES DE PAGO Y UBICACIÓN</a></p>
+               <ul>
+                  <li><a href="menu8.HTML">Ver Opciones</a></li>
+               </ul>
+            </li>
+
+            <li>
+               <p><a href="informacion.html">INFORMACIÓN</a></p>
+               <ul>
+                  <li><a href="informacion.html">Más Información</a></li>
+               </ul>
+            </li>
+
+            <li>
+               <a href="index3.php">
+                  <img src="defis.png" alt="Ir al formulario" width="130" height="130" style="cursor:pointer; border-radius: 10px;">
+               </a>
+            </li>
+         </ul>
+      </nav>
+
+      <!-- Mantiene solo esta imagen principal -->
+      <img src="113.jpg" alt="Imagen principal" class="principal">
+
+      <p>
+         <a href="https://share.google/Q5YCviwYntzpR3B4T" class="ayuntamiento">PORTAL AYUNTAMIENTO VALLE DE BRAVO</a>
+      </p>
+
+      <!-- 🔹 Sección con botones -->
+      <div class="extras">
+         <a href="#" class="boton" onclick="mostrarVideo()">🎥 Ver Video</a>
+         <a href="documento1.pdf" class="boton" download>📄 Descargar Documento</a>
+      </div>
    </center>
 
-   <div class="extras">
-      <a href="#" class="boton" onclick="mostrarVideo('vide44.mp4')">🎥 Ver Video</a>
-      <a href="documento1.pdf" class="boton" download>📄 Descargar Documento</a>
-   </div>
-
-   <!-- CONTENEDOR DE VIDEO -->
-   <div id="video-container">
-      <button id="cerrarVideo" onclick="cerrarVideo()">X</button>
-      <video id="video" controls autoplay></video>
-   </div>
-
    <script>
-      function mostrarVideo(ruta) {
-         document.getElementById("video").src = ruta;
-         document.getElementById("video-container").style.display = "flex";
+      function reproducirVideo() {
+         const video = document.createElement("video");
+         video.src = "video5.mp4";
+         video.controls = true;
+         video.autoplay = true;
+         video.style.width = "80%";
+         video.style.borderRadius = "15px";
+         video.style.margin = "20px auto";
+         document.body.innerHTML = "";
+         document.body.appendChild(video);
       }
 
-      function cerrarVideo() {
-         let video = document.getElementById("video");
-         video.pause();
-         video.src = "";
-         document.getElementById("video-container").style.display = "none";
+      function mostrarVideo() {
+         const video = document.createElement("video");
+         video.src = "vide44.mp4";
+         video.controls = true;
+         video.autoplay = true;
+         video.style.width = "80%";
+         video.style.borderRadius = "15px";
+         video.style.margin = "20px auto";
+         document.body.innerHTML = "";
+         document.body.appendChild(video);
       }
    </script>
-
 </body>
 </html>
