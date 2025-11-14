@@ -7,49 +7,48 @@
    <script src="maestra.js"></script>
    <title>GUIA DIGITAL CIUDADANA</title>
 
-   <!-- Fuente moderna -->
    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
    <style>
-      * {
-         box-sizing: border-box;
-      }
-
       body {
          margin: 0;
          font-family: 'Poppins', sans-serif;
          background: linear-gradient(to bottom, #0186a1, #01a1c1);
       }
 
-      /* --------- NAV RESPONSIVE --------- */
+      /* --- MENÚ SIEMPRE HORIZONTAL --- */
       nav {
+         width: 100%;
          background: #017f99;
-         padding: 10px;
+         overflow-x: auto;
+         white-space: nowrap;
+         -webkit-overflow-scrolling: touch;
       }
 
       nav ul {
-         list-style: none;
-         margin: 0;
+         display: inline-flex;
          padding: 0;
-         display: flex;
-         flex-wrap: wrap;
-         justify-content: center;
+         margin: 0;
+         list-style: none;
+         white-space: nowrap;
       }
 
       nav ul li {
+         display: inline-block;
+         margin: 0 10px;
          position: relative;
-         margin: 5px;
+         white-space: nowrap;
       }
 
       nav ul li a {
-         display: block;
-         padding: 12px 16px;
+         display: inline-block;
+         padding: 15px 20px;
          color: white;
          text-decoration: none;
          font-weight: 600;
          border-radius: 8px;
-         transition: 0.3s;
-         font-size: 14px;
+         transition: background 0.3s;
+         white-space: nowrap;
       }
 
       nav ul li a:hover {
@@ -63,7 +62,7 @@
          left: 0;
          background: #00677e;
          border-radius: 8px;
-         min-width: 150px;
+         min-width: 180px;
          z-index: 100;
       }
 
@@ -71,35 +70,26 @@
          display: block;
       }
 
-      nav img {
-         width: 90px;
-         height: auto;
-      }
-
-      form input[type="search"] {
-         width: 140px;
-      }
-
-      /* --------- IMAGEN PRINCIPAL AJUSTADA --------- */
+      /* Imagen principal responsiva */
       .principal {
          width: 100%;
          height: auto;
-         max-height: 450px;
-         object-fit: cover;
          display: block;
+         max-height: 500px;
+         object-fit: cover;
       }
 
-      /* --------- BOTONES AYUNTAMIENTO --------- */
       .ayuntamiento {
          background: #005f73;
          color: white;
+         font-weight: bold;
+         display: inline-block;
          padding: 12px 20px;
          border-radius: 10px;
+         margin-top: 15px;
          text-decoration: none;
-         margin-top: 10px;
-         display: inline-block;
-         font-weight: bold;
-         transition: 0.3s;
+         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+         transition: background 0.3s, transform 0.3s;
       }
 
       .ayuntamiento:hover {
@@ -107,12 +97,13 @@
          transform: scale(1.05);
       }
 
-      /* --------- BARRA DE BOTONES RESPONSIVE --------- */
-      .barra-extras {
-         width: 90%;
+      /* Botones "Ver video" y "Descargar Documento" */
+      .extras {
+         width: 100%;
          display: flex;
          justify-content: space-between;
-         margin-top: 20px;
+         padding: 20px;
+         box-sizing: border-box;
       }
 
       .boton {
@@ -122,8 +113,8 @@
          border-radius: 8px;
          text-decoration: none;
          font-weight: bold;
-         transition: 0.3s;
-         text-align: center;
+         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+         transition: background 0.3s, transform 0.3s;
       }
 
       .boton:hover {
@@ -131,8 +122,8 @@
          transform: scale(1.05);
       }
 
-      /* --------- VIDEO OVERLAY RESPONSIVE --------- */
-      .overlay {
+      /* VIDEO FULLSCREEN SIN SALIR DE LA PÁGINA */
+      #video-container {
          position: fixed;
          top: 0;
          left: 0;
@@ -142,202 +133,87 @@
          display: none;
          justify-content: center;
          align-items: center;
-         z-index: 9999;
          padding: 20px;
+         z-index: 9999;
       }
 
-      .video-container {
-         width: 100%;
+      #video-container video {
+         width: 90%;
          max-width: 700px;
-         position: relative;
+         border-radius: 15px;
       }
 
-      .cerrar {
+      #cerrarVideo {
          position: absolute;
-         top: -15px;
-         right: -15px;
-         background: red;
+         top: 20px;
+         right: 20px;
+         background: #ff4444;
          color: white;
          border: none;
-         font-size: 20px;
-         border-radius: 50%;
-         width: 35px;
-         height: 35px;
+         padding: 10px 15px;
+         border-radius: 8px;
          cursor: pointer;
-      }
-
-      video {
-         width: 100%;
-         height: auto;
-         border-radius: 10px;
-      }
-
-      /* --------- RESPONSIVE PARA CELULAR --------- */
-      @media(max-width: 600px) {
-
-         nav ul {
-            flex-direction: column;
-         }
-
-         nav li {
-            width: 100%;
-            text-align: center;
-         }
-
-         nav img {
-            width: 70px;
-         }
-
-         form input[type="search"] {
-            width: 100px;
-         }
-
-         .barra-extras {
-            flex-direction: column;
-            gap: 10px;
-         }
-
-         .boton {
-            width: 100%;
-            text-align: center;
-         }
+         font-size: 18px;
       }
    </style>
 </head>
 
 <body>
 
+   <nav>
+      <ul>
+         <li><a href="#" onclick="mostrarVideo('video5.mp4')"><img src="logoss.png" width="90" style="border-radius:10px;"></a></li>
+
+         <li>
+            <form method="get" action="https://www.google.com/search" target="_blank" style="display:inline-flex;">
+               <input type="search" name="q" placeholder="Buscar" required style="padding:8px; border-radius:8px; border:none;">
+               <input type="submit" value="Buscar" style="padding:8px; background:#005f73; border:none; color:white; border-radius:8px;">
+            </form>
+         </li>
+
+         <li><a href="ciudadanoo.html">CIUDADANO</a></li>
+         <li><a href="TRAMITE.HTML">TRÁMITE</a></li>
+         <li><a href="SOLICITUD.HTML">SOLICITUD</a></li>
+         <li><a href="PAGO.HTML">PAGO</a></li>
+         <li><a href="DOCUMENTO.HTML">DOCUMENTO</a></li>
+         <li><a href="visitantes.HTML">VISITANTES</a></li>
+         <li><a href="menu8.HTML">PAGO/UBICACIÓN</a></li>
+         <li><a href="informacion.html">INFORMACIÓN</a></li>
+
+         <li><a href="index3.php"><img src="defis.png" width="90" style="border-radius:10px;"></a></li>
+      </ul>
+   </nav>
+
+   <img src="113.jpg" class="principal">
+
    <center>
-
-      <!-- NAV -->
-      <nav>
-         <ul>
-            <li>
-               <a href="#" onclick="reproducirVideo()">
-                  <img src="logoss.png" alt="Logo">
-               </a>
-            </li>
-
-            <li>
-               <form method="get" action="https://www.google.com/search" target="_blank">
-                  <input type="search" name="q" placeholder="Buscar" required>
-                  <input type="submit" value="Buscar">
-               </form>
-            </li>
-
-            <li><a href="ciudadanoo.html">CIUDADANO</a></li>
-
-            <li>
-               <a href="TRAMITE.HTML">TRÁMITE</a>
-               <ul>
-                  <li><a href="bvh.html">Administrativos</a></li>
-                  <li><a href="gestionar.php">Gestionar Trámite</a></li>
-               </ul>
-            </li>
-
-            <li><a href="SOLICITUD.HTML">SOLICITUD</a></li>
-
-            <li>
-               <a href="PAGO.HTML">PAGO</a>
-               <ul>
-                  <li><a href="serviciosyderechos.html">Servicios y Derechos</a></li>
-                  <li><a href="http://201.144.206.190/">Predial</a></li>
-                  <li><a href="http://odapasvalledebravo.dyndns.org/Default.aspx">Agua</a></li>
-               </ul>
-            </li>
-
-            <li>
-               <a href="DOCUMENTO.HTML">DOCUMENTO</a>
-               <ul>
-                  <li><a href="galeria2.html">Galería</a></li>
-               </ul>
-            </li>
-
-            <li>
-               <a href="visitantes.HTML">VISITANTES</a>
-               <ul>
-                  <li><a href="index2.php">Registro</a></li>
-               </ul>
-            </li>
-
-            <li>
-               <a href="menu8.HTML">PAGO/UBICACIÓN</a>
-            </li>
-
-            <li>
-               <a href="informacion.html">INFORMACIÓN</a>
-            </li>
-
-            <li>
-               <a href="index3.php">
-                  <img src="defis.png" alt="Formulario">
-               </a>
-            </li>
-         </ul>
-      </nav>
-
-      <!-- IMAGEN PRINCIPAL -->
-      <img src="113.jpg" alt="Imagen principal" class="principal">
-
-      <p>
-         <a href="https://share.google/Q5YCviwYntzpR3B4T" class="ayuntamiento">PORTAL AYUNTAMIENTO VALLE DE BRAVO</a>
-      </p>
-
-      <!-- BOTONES -->
-      <div class="barra-extras">
-         <a href="#" class="boton" onclick="mostrarVideo()">🎥 Ver Video</a>
-         <a href="documento1.pdf" class="boton" download>📄 Descargar Documento</a>
-      </div>
-
+      <p><a href="https://share.google/Q5YCviwYntzpR3B4T" class="ayuntamiento">PORTAL AYUNTAMIENTO VALLE DE BRAVO</a></p>
    </center>
 
-   <!-- VIDEO OVERLAY -->
-   <div id="videoOverlay" class="overlay">
-      <div class="video-container">
-         <button class="cerrar" onclick="cerrarVideo()">✖</button>
-         <video id="videoPlayer" controls autoplay></video>
-      </div>
+   <div class="extras">
+      <a href="#" class="boton" onclick="mostrarVideo('vide44.mp4')">🎥 Ver Video</a>
+      <a href="documento1.pdf" class="boton" download>📄 Descargar Documento</a>
+   </div>
+
+   <!-- CONTENEDOR DE VIDEO -->
+   <div id="video-container">
+      <button id="cerrarVideo" onclick="cerrarVideo()">X</button>
+      <video id="video" controls autoplay></video>
    </div>
 
    <script>
-      function mostrarVideo() {
-         document.getElementById("videoPlayer").src = "vide44.mp4";
-         document.getElementById("videoOverlay").style.display = "flex";
-      }
-
-      function reproducirVideo() {
-         document.getElementById("videoPlayer").src = "video5.mp4";
-         document.getElementById("videoOverlay").style.display = "flex";
+      function mostrarVideo(ruta) {
+         document.getElementById("video").src = ruta;
+         document.getElementById("video-container").style.display = "flex";
       }
 
       function cerrarVideo() {
-         let v = document.getElementById("videoPlayer");
-         v.pause();
-         v.src = "";
-         document.getElementById("videoOverlay").style.display = "none";
+         let video = document.getElementById("video");
+         video.pause();
+         video.src = "";
+         document.getElementById("video-container").style.display = "none";
       }
    </script>
 
 </body>
-   <!-- Ventana para reproducir videos -->
-<div id="videoOverlay" class="overlay">
-    <div class="video-container">
-        <button class="cerrar" onclick="cerrarVideo()">✖</button>
-        <video id="videoPlayer" autoplay controls style="width:100%; border-radius:10px;"></video>
-    </div>
-</div>
-
-<script>
-function mostrarVideo() {
-    document.getElementById("videoPlayer").src = "vide44.mp4";
-    document.getElementById("videoOverlay").style.display = "flex";
-}
-
-function cerrarVideo() {
-    let player = document.getElementById("videoPlayer");
-    player.pause();
-    player.src = "";
-    document.getElementById("videoOverlay").style.display = "none";
-}
-</script>
 </html>
